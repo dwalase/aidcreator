@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { WiAttribute } from '../model/WiAttribute';
 import { WiValue } from '../model/WiValue';
+import { WiAttributeDecription } from '../model/WiAttributeDecription';
+
 
 @Component({
   selector: 'app-wi-attribute',
@@ -12,9 +14,7 @@ export class WiAttributeComponent {
 
 	@Input()
 	wiAttribute: WiAttribute = new WiAttribute();
-	possibleAttributes: any[] = ['APPAR', 'SUMM'].map( va => {
-		return {value: va};
-	});
+	possibleAttributes: WiAttributeDecription[] = WiAttributeDecription.VALUES;
 
 
 	addValue() {

@@ -1,5 +1,5 @@
 <p-dropdown [options]="possibleAttributes" [(ngModel)]="wiAttribute.name" [editable]="true"
-			optionLabel="value" optionValue="value" [filter]="true" filterBy="value"
+			optionLabel="label" optionValue="value" [filter]="true" filterBy="value"
 			 [style]="{'vertical-align' : 'top' }"></p-dropdown>
 <p-button icon="pi pi-plus-circle"(click)="addValue()"></p-button>
 <div class="wi-attr-margin-left " *ngFor="let value of wiAttribute.values; index as i">
