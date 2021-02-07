@@ -1,1 +1,9 @@
-<textarea rows="5" cols="80" pInputTextarea disabled="true" [ngModel]="parsedOutput"></textarea>
+<div>
+	<div>
+		<div>
+			<button pButton (click)="refresh()" label="Refresh"></button>
+			<button pButton (click)="coppyToClipboard()" label="Coppy to clipboard"></button>
+		</div>
+	</div>
+	<textarea rows="5" cols="50" pInputTextarea [autoResize]="true" disabled="true" [ngModel]="parsedOutput"></textarea>
+</div>
