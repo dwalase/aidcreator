@@ -7,17 +7,23 @@
 	 <input type="text" [(ngModel)]="entry.name" pInputText/>
 </div>
 <div>
-	<label>Race: </label>
-	<input type="text" [(ngModel)]="entry.race" pInputText/>
+	<p-checkbox [binary]="true" label="Basic description" [(ngModel)]="entry.parseBaseDescription"></p-checkbox>
+	<p-checkbox [binary]="true" label="You" [(ngModel)]="entry.parseAsYou"></p-checkbox>
 </div>
-<div>
-	<label>MF: </label>
-	<input type="text" [(ngModel)]="entry.sex" pInputText/>
-</div>
-<div>
-	<label>Age: </label>
-	<input type="text" [(ngModel)]="entry.age" pInputText/>
-</div>
+<span *ngIf="entry.parseBaseDescription">
+	<div>
+		<label>Race: </label>
+		<input type="text" [(ngModel)]="entry.race" pInputText/>
+	</div>
+	<div>
+		<label>Sex: </label>
+		<input type="text" [(ngModel)]="entry.sex" pInputText/>
+	</div>
+	<div>
+		<label>Age: </label>
+		<input type="number" [(ngModel)]="entry.age" pInputText/>
+	</div>
+</span>
 <div *ngFor="let attr of entry.attributes; index as i">
 	<p-button icon="pi pi-times-circle" (click)="removeAttribute(i)"></p-button>
    	<app-wi-attribute [wiAttribute]="attr"></app-wi-attribute>

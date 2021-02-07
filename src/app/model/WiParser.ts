@@ -28,12 +28,14 @@ export class WiParser {
 			return '';
 		}
 
-		let content = this.parseSingleAttribute(this.getDesc()) + this.model.attributes.map(val => {
+		let basicDescription = this.model.parseBaseDescription ? this.parseSingleAttribute(this.getDesc()) : '';
+		let content = basicDescription + this.model.attributes.map(val => {
 				return this.parseSingleAttribute(val);
 			}).reduce((prev, curr) => prev + curr, '');
 
 		if(this.model.fullName){
-			let template = this.wiTemplate.replace(WiParser.FULL, this.model.fullName);
+			const fullName = this.model.parseAsYou ? this.model.fullName + ' AKA You' : this.model.fullName;
+			let template = this.wiTemplate.replace(WiParser.FULL, fullName);
 			template = template.replace(WiParser.CONTENT, content);
 			return template;
 		} else {
@@ -62,10 +64,9 @@ export class WiParser {
 		
 		let attrStr = '';
 		if(attr.name) {
-		   attrStr = this.wiAttrTemplate.replace(WiParser.ATTR, attr.name);
+		   attrStr = this.wiAttrTemplate.replace(WiParser.ATTR, attr.name.toUpperCase());
 		   attrStr = attrStr.replace(WiParser.NAME, this.model.name);
 		   attrStr = attrStr.replace(WiParser.VALUES, valuesStr);
-		   attrStr = attrStr;
 		} else {
 		   attrStr = valuesStr;
 		}
