@@ -1,0 +1,17 @@
+<p-dropdown [options]="possibleAttributes" [(ngModel)]="wiAttribute.name" [editable]="true"
+			optionLabel="value" optionValue="value" [filter]="true" filterBy="value"
+			 [style]="{'vertical-align' : 'top' }"></p-dropdown>
+<p-button icon="pi pi-plus-circle"(click)="addValue()"></p-button>
+<div class="wi-attr-margin-left " *ngFor="let value of wiAttribute.values; index as i">
+	<span class="p-input-icon-right">
+	   <i class="pi pi-times-circle" (click)="removeValue(i)"></i>
+	   <input type="text" [(ngModel)]="value.value" pInputText/>
+	</span>
+	<p-button icon="pi pi-plus-circle"(click)="addSecondaryValue(value)"></p-button>
+	<div *ngFor="let secondaryValues of value.secondaryValues; index as j; trackBy: trackByFn">
+	 	<span class="p-input-icon-right wi-attr-margin-left">
+		   <i class="pi pi-times-circle" (click)="removeSecondaryValue(value, j)"></i>
+		   <input type="text" [(ngModel)]="value.secondaryValues[j]" pInputText/>
+		</span>
+	</div>
+</div>

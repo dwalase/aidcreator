@@ -1,0 +1,19 @@
+<div class="wi-line">
+	Full name: <input type="text" [(ngModel)]="entry.fullName" pInputText/>
+	Name: <input type="text" [(ngModel)]="entry.name" pInputText/>
+	<div>
+		Race: <input type="text" [(ngModel)]="entry.race" pInputText/>
+		MF: <input type="text" [(ngModel)]="entry.sex" pInputText/>
+		Age: <input type="text" [(ngModel)]="entry.age" pInputText/>
+	</div>
+</div>
+<div *ngFor="let attr of entry.attributes; index as i">
+	<p-button icon="pi pi-times-circle" (click)="removeAttribute(i)"></p-button>
+   	<app-wi-attribute [wiAttribute]="attr"></app-wi-attribute>
+</div>
+<div>
+	<button pButton (click)="addAttribute()" label="Add attribute"></button>
+</div>
+<div>
+   <app-wi-generator-output [model]="entry"></app-wi-generator-output>
+</div>
