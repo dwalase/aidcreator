@@ -1,4 +1,5 @@
 export class WiValue {
-	value: string = '';
-	secondaryValues: string[] = [];
+	constructor(public value: string = '', public secondaryValues: string[] = []){
+
+	}
 }

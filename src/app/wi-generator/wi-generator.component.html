@@ -29,8 +29,11 @@
    	<app-wi-attribute [wiAttribute]="attr"></app-wi-attribute>
 </div>
 <div>
-	<button pButton (click)="addAttribute()" label="Add attribute"></button>
+	<p-splitButton (onClick)="addAttribute()" label="Add attribute" [model]="menu"></p-splitButton>
 </div>
 <div>
    <app-wi-generator-output [model]="entry"></app-wi-generator-output>
+</div>
+<div>
+	<p-button (click)="reset()" label="Reset"></p-button>
 </div>
